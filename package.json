@@ -4,7 +4,10 @@
   "description": "Lemon code master exercises to practise bundling",
   "main": "index.js",
   "scripts": {
-    "start": "webpack serve --mode development --open",
+    "start": "run-p -l type-check:watch start:dev",
+    "start:dev": "webpack serve --mode development --open",
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "npm run type-check -- --watch",
     "build": "webpack --mode development",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -14,8 +17,11 @@
     "@babel/cli": "^7.14.3",
     "@babel/core": "^7.14.3",
     "@babel/preset-env": "^7.14.4",
+    "@babel/preset-typescript": "^7.13.0",
     "babel-loader": "^8.2.2",
     "html-webpack-plugin": "^5.3.1",
+    "npm-run-all": "^4.1.5",
+    "typescript": "^4.3.2",
     "webpack": "^5.38.1",
     "webpack-cli": "^4.7.0",
     "webpack-dev-server": "^3.11.2"
