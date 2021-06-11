@@ -6,11 +6,10 @@ const path = require('path');
 module.exports = {
   context: path.join(__dirname, 'src'),
   resolve: {
-    extensions: ['.js', '.ts'],
+    extensions: ['.js', '.ts', 'scss'],
   },
   entry: {
     app: ['./index.ts'],
-    appStyles: ['./main.scss'],
   },
   output: {
     filename: '[name].[chunkhash].js',
@@ -59,8 +58,7 @@ module.exports = {
     }),
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
-      filename: '[name].css',
-      chunkFilename: '[id].css',
+      filename: '[name].[contenthash].css',
     }),
   ],
   devtool: 'eval-source-map',
